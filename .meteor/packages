@@ -22,3 +22,5 @@ fourseven:scss
 kadira:blaze-layout
 kadira:flow-router
 reactive-dict
+aldeed:autoform
+aldeed:autoform-bs-datepicker

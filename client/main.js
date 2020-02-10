@@ -25,3 +25,43 @@ Collections.markets   = new Mongo.Collection(null);
 import '../lib/router.js';
 
 import './main.html';
+import '../imports/ui/transactions/transactions.js';
+
+
+Template.mainMenu.events({
+  get_nodeDetails() {
+      let _nodeName = FlowRouter.getParam("_nodeName");
+      //let nodeInfo = node_info(selectedNode(_nodeName, _data.get('nodes')));
+      let nodeInfo = node_info(findOneDocument('nodes', {'metadata.name': _nodeName}));
+      if(_debug) {
+          console.log(arguments.callee.name + '() : ');
+          console.dir(nodeInfo);
+      }
+      return nodeInfo;
+  },
+  'click .debug_database': (e) => {
+    Meteor.call('debug_database', (err, res) => {
+      if (err) {
+          console.log("debug_database ERROR : " + err);
+      } else {
+          if (_debug) {
+              console.log('debug_database Response :');
+              console.dir(res);
+          }
+      }
+    });
+  },
+  'click .debug_db': (e) => {
+    Meteor.call('debug_db', (err, res) => {
+      if (err) {
+          console.log("debug_db ERROR : " + err);
+      } else {
+          if (_debug) {
+              console.log('debug_db Response :');
+              console.dir(res);
+          }
+      }
+    });
+  }
+
+});

@@ -1,0 +1,18 @@
+<template name="createTransactions">
+    {{#autoForm schema=transactionSchema id="transactionForm" type="method" meteormethod="addTransaction"}}
+    <fieldset>
+      <legend>Create transaction</legend>
+      {{> afQuickField name="exchange"}}
+      {{> afQuickField name="icoBase"}}
+      {{> afQuickField name="ico"}}
+      {{> afQuickField name="date"}}
+      {{> afQuickField name="price"}}
+      {{> afQuickField name="quantity"}}
+      {{> afQuickField name="action"}}
+      <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-default">Reset</button>
+      </div>
+    </fieldset>
+    {{/autoForm}}
+</template>
